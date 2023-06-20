@@ -25,10 +25,12 @@ while True:
         for item in cadastro_lista:
             print("Nome: {}\nIdade: {}\nCPF: {}\n".format(item[0], item[1], item[2]))
     
+    #Procura de Cadastro pelo CPF 
     elif selecionar == 3:
         cpf_busca = input("Insira o CPF para encontrar o cadastro correspondente: ")
         cpf_busca_mascarado = "{}.{}.{}-{}".format(cpf_busca[:3], cpf_busca[3:6], cpf_busca[6:9], cpf_busca[9:])
         cpf_encontrado = False
+        #condição que encontra cadastro na lista
         for item in cadastro_lista:
             if item[2] == cpf_busca_mascarado:
                 cpf_encontrado = True
