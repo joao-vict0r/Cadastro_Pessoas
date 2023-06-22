@@ -3,7 +3,7 @@ os.system('cls')
 cadastro_lista = []
 
 while True:
-    selecionar = int(input("Selecione uma Opção: \n1 = Cadastrar \n2 = Ver cadastros \n3 = Achar cadastro \n4 = Sair\n"))
+    selecionar = int(input("Selecione uma Opção: \n1 = Cadastrar \n2 = Ver cadastros \n3 = Achar cadastro \n4 = Excluir Cadastro \n5 = Sair\n"))
     if selecionar == 1:
         nome = input("Informe nome: ")
         idade = int(input("Qual sua idade: "))
@@ -39,6 +39,19 @@ while True:
             print("Não foi encontrado cadastro com este CPF: {}".format(cpf_busca_mascarado))
     
     elif selecionar == 4:
+        cpf_busca = input("Insira o CPF para exclusão do cadastro: ")
+        cpf_busca_mascarado = "{}.{}.{}-{}".format(cpf_busca[:3], cpf_busca[3:6], cpf_busca[6:9], cpf_busca[9:])
+        cpf_encontrado = False
+  
+        for item in cadastro_lista:
+            if item[2] == cpf_busca_mascarado:
+                cpf_encontrado = True
+                cadastro_lista.remove([nome, idade, cpf_mascarado])
+                print("Cadastro excluido")
+        if not cpf_encontrado:
+            print("Não foi encontrado cadastro com este CPF: {}".format(cpf_busca_mascarado))
+            
+    elif selecionar == 5:
         break
     else:
         print("Opção inválida. Tente novamente.")
